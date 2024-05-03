@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using Random = System.Random;
 
@@ -1286,6 +1286,65 @@ namespace BreakInfinity
         public static BigDouble Sqr(this BigDouble value)
         {
             return BigDouble.Pow(value, 2);
+        }
+
+        public static string ToWords(this BigDouble value)
+        {
+            string notation = "";
+
+            return notation = value.Exponent switch
+            {
+                0 => value.Mantissa * Math.Pow(10, 0) + "",
+                1 => value.Mantissa * Math.Pow(10, 1) + "",
+                2 => value.Mantissa * Math.Pow(10, 2) + "",
+                3 => value.Mantissa * Math.Pow(10, 3) + "",
+                long n when (n > 3 && n < 6) => Math.Pow(10, n - 3) * value.Mantissa + " Thousand",
+                6 => value.Mantissa + " Million",
+                long n when (n > 6 && n < 9) => Math.Pow(10, n - 6) * value.Mantissa + " Million",
+                9 => value.Mantissa + " Billion",
+                long n when (n > 9 && n < 12) => Math.Pow(10, n - 9) * value.Mantissa + " Billion",
+                12 => value.Mantissa + " Trillion",
+                long n when (n > 12 && n < 15) => Math.Pow(10, n - 12) * value.Mantissa + " Trillion",
+                15 => value.Mantissa + " Quadrillion",
+                long n when (n > 15 && n < 18) => Math.Pow(10, n - 15) * value.Mantissa + " Quadrillion",
+                18 => value.Mantissa + " Quintillion",
+                long n when (n > 18 && n < 21) => Math.Pow(10, n - 18) * value.Mantissa + " Quintillion",
+                21 => value.Mantissa + " Sextillion",
+                long n when (n > 21 && n < 24) => Math.Pow(10, n - 21) * value.Mantissa + " Sextillion",
+                24 => value.Mantissa + " Septillion",
+                long n when (n > 24 && n < 27) => Math.Pow(10, n - 24) * value.Mantissa + " Septillion",
+                27 => value.Mantissa + " Octillion",
+                long n when (n > 27 && n < 30) => Math.Pow(10, n - 27) * value.Mantissa + " Octillion",
+                30 => value.Mantissa + " Nonillion",
+                long n when (n > 30 && n < 33) => Math.Pow(10, n - 30) * value.Mantissa + " Nonillion",
+                33 => value.Mantissa + " Decillion",
+                long n when (n > 33 && n < 36) => Math.Pow(10, n - 33) * value.Mantissa + " Decillion",
+                36 => value.Mantissa + " Undecillion",
+                long n when (n > 36 && n < 39) => Math.Pow(10, n - 36) * value.Mantissa + " Undecillion",
+                39 => value.Mantissa + " Duodecillion",
+                long n when (n > 39 && n < 42) => Math.Pow(10, n - 39) * value.Mantissa + " Duodecillion",
+                42 => value.Mantissa + " Tredecillion",
+                long n when (n > 42 && n < 45) => Math.Pow(10, n - 42) * value.Mantissa + " Tredecillion",
+                45 => value.Mantissa + " Quattuordecillion",
+                long n when (n > 45 && n < 48) => Math.Pow(10, n - 45) * value.Mantissa + " Quattuordecillion",
+                48 => value.Mantissa + " Quindecillion",
+                long n when (n > 48 && n < 51) => Math.Pow(10, n - 48) * value.Mantissa + " Quindecillion",
+                51 => value.Mantissa + " Sexdecillion",
+                long n when (n > 51 && n < 54) => Math.Pow(10, n - 51) * value.Mantissa + " Sexdecillion",
+                54 => value.Mantissa + " Septendecillion",
+                long n when (n > 54 && n < 57) => Math.Pow(10, n - 54) * value.Mantissa + " Septendecillion",
+                57 => value.Mantissa + " Octodecillion",
+                long n when (n > 57 && n < 60) => Math.Pow(10, n - 57) * value.Mantissa + " Octodecillion",
+                60 => value.Mantissa + " Novemdecillion",
+                long n when (n > 60 && n < 63) => Math.Pow(10, n - 60) * value.Mantissa + " Novemdecillion",
+                63 => value.Mantissa + " Vigintillion",
+                long n when (n > 63 && n < 100) => Math.Pow(10, n - 63) * value.Mantissa + " Vigintillion",
+                100 => value.Mantissa + " Googol",
+                long n when (n > 100 && n < 303) => Math.Pow(10, n - 100) * value.Mantissa + " Googol",
+                303 => value.Mantissa + " Centillion",
+                long n when (n > 303) => Math.Pow(10, n - 303) * value.Mantissa + " Centillion",
+                _ => value.Mantissa + " e" + value.Exponent,
+            };
         }
 
 #if EXTENSIONS_EASTER_EGGS
