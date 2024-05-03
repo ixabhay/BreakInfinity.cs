@@ -1,5 +1,9 @@
 # Literal String for Big Numbers
 Use ToWords function to get the string of literal notation of the big numbers.
+```csharp
+BigDouble bignumber = new BigDouble(105203122911321275.6).ToString("E0") == "1E+017"
+bigNumber.ToWords();
+```
 
 
 # BreakInfinity.cs
